@@ -1662,6 +1662,119 @@
             transform: translate(-50%, -50%) scale(0.8);
         }
 
+        /* Resume PDF Viewer Modal */
+        .resume-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .resume-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .resume-modal-content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            height: 90vh;
+            max-height: 900px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .resume-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 2px solid var(--card-border);
+        }
+
+        .resume-modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-strong);
+        }
+
+        .resume-modal-close {
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .resume-modal-close:hover {
+            background: var(--card-border);
+            transform: rotate(90deg);
+        }
+
+        .resume-modal-body {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resume-pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .resume-download-button {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: var(--cta-bg);
+            color: var(--cta-color);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            z-index: 10;
+        }
+
+        .resume-download-button:hover {
+            background: var(--cta-hover-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        @media (max-width: 768px) {
+            .resume-modal-content {
+                width: 95%;
+                height: 95vh;
+            }
+
+            .resume-modal-title {
+                font-size: 1.2rem;
+            }
+        }
+
         /* Navigation Column */
         .contact-navigation {
             display: flex;
@@ -2371,7 +2484,7 @@
                         <ul class="nav-links-list">
                             <li><a href="#projects">My Works</a></li>
                             <!-- <li><a href="#about">Case S</a></li> -->
-                            <li><a href="#" onclick="window.open('./assets/resume.pdf', '_blank')">Resume</a></li>
+                            <li><a href="#" onclick="openResumeModal(event)">Resume</a></li>
                         </ul>
                     </div>
 
@@ -2380,7 +2493,7 @@
                         <h4 class="contact-title">Contact</h4>
                         <div class="contact-details">
                             <div class="contact-detail-item">
-                                <div class="contact-detail-icon">✉</div>
+                                <div class="contact-detail-icon">✉️</div>
                                 <div class="contact-detail-text">
                                     <span class="contact-detail-label">Email</span>
                                     <span class="contact-detail-value">sudiptosarker05@gmail.com</span>
@@ -2413,6 +2526,24 @@
             </div>
         </div>
     </section>
+
+    <!-- Resume PDF Viewer Modal -->
+    <div id="resumeModal" class="resume-modal">
+        <div class="resume-modal-content">
+            <div class="resume-modal-header">
+                <h3 class="resume-modal-title">My Resume</h3>
+                <button class="resume-modal-close" onclick="closeResumeModal()"
+                    aria-label="Close resume viewer">×</button>
+            </div>
+            <div class="resume-modal-body">
+                <iframe id="resumePdfViewer" class="resume-pdf-viewer" src="" frameborder="0"></iframe>
+                <a href="./assets/resume.pdf" download="Sudipto_Sarker_Resume.pdf" class="resume-download-button"
+                    target="_blank">
+                    📥 Download Resume
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Mobile menu functionality
@@ -2600,6 +2731,51 @@
                 }, 300);
             }, 2000);
         }
+
+        // Resume Modal Functions
+        function openResumeModal(event) {
+            event.preventDefault();
+            const modal = document.getElementById('resumeModal');
+            const pdfViewer = document.getElementById('resumePdfViewer');
+
+            // Set PDF source
+            pdfViewer.src = './assets/resume.pdf';
+
+            // Show modal
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResumeModal() {
+            const modal = document.getElementById('resumeModal');
+            const pdfViewer = document.getElementById('resumePdfViewer');
+
+            // Hide modal
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+
+            // Clear PDF source after animation to prevent memory issues
+            setTimeout(() => {
+                pdfViewer.src = '';
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('resumeModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeResumeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('resumeModal');
+                if (modal.classList.contains('show')) {
+                    closeResumeModal();
+                }
+            }
+        });
     </script>
 </body>
 
