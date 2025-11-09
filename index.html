@@ -117,7 +117,7 @@
             -webkit-text-fill-color: #ffffff !important;
         }
 
-        [data-theme="dark"] #experience .section-title {
+        [data-theme="dark"] #projects .section-title {
             background: #080808 !important;
             color: #ffffff !important;
             -webkit-text-fill-color: #ffffff !important;
@@ -527,23 +527,7 @@
             margin: 90px auto 40px auto;
         }
 
-        #experience .section-title {
-            background: #080808 !important;
-            color: #ffffff !important;
-            text-align: center;
-            padding: 1.5rem 0;
-            margin: -35px auto;
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-            border-bottom: 1px solid var(--card-border);
-            font-size: 3rem;
-            font-weight: bold;
-            background-clip: unset !important;
-            -webkit-background-clip: unset !important;
-            -webkit-text-fill-color: #ffffff !important;
-        }
+        /* Experience section now uses default section-title style like Projects */
 
 
         .experience-timeline::before {
@@ -621,6 +605,30 @@
         }
 
         /* Projects Section */
+        #projects .section-title {
+            background: #080808 !important;
+            color: #ffffff !important;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin: 0 0 6rem 0;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom: 1px solid var(--card-border);
+            font-size: 3rem;
+            font-weight: bold;
+            background-clip: unset !important;
+            -webkit-background-clip: unset !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+
+        [data-theme="dark"] #projects .section-title {
+            background: #080808 !important;
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -1049,9 +1057,10 @@
             }
 
             #about .section-title,
-            #experience .section-title {
+            #projects .section-title {
                 font-size: 2rem;
                 padding: 1rem 0;
+                margin: 0 0 2rem 0;
             }
         }
 
