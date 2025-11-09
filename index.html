@@ -1775,6 +1775,196 @@
             }
         }
 
+        /* AI Section Styles */
+        #ai-powered {
+            padding-top: 0;
+            padding-bottom: 40px;
+        }
+
+        #ai-powered .section-title {
+            background: #080808 !important;
+            color: #ffffff !important;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin: 0;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom: 1px solid var(--card-border);
+            font-size: 3rem;
+            font-weight: bold;
+            background-clip: unset !important;
+            -webkit-background-clip: unset !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+
+        [data-theme="dark"] #ai-powered .section-title {
+            background: #080808 !important;
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+
+        .ai-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 3rem auto 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .ai-intro h3 {
+            font-size: 2rem;
+            color: var(--text-strong);
+            margin-bottom: 1rem;
+        }
+
+        .ai-intro p {
+            font-size: 1.1rem;
+            color: var(--text-weak);
+            line-height: 1.8;
+        }
+
+        .ai-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 2rem;
+        }
+
+        .ai-benefit-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .ai-benefit-card:hover::before {
+            left: 100%;
+        }
+
+        .ai-benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--skill-card-hover-border);
+        }
+
+        .ai-benefit-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .ai-benefit-card:nth-child(2) .ai-benefit-icon {
+            animation-delay: 0.3s;
+        }
+
+        .ai-benefit-card:nth-child(3) .ai-benefit-icon {
+            animation-delay: 0.6s;
+        }
+
+        .ai-benefit-card:nth-child(4) .ai-benefit-icon {
+            animation-delay: 0.9s;
+        }
+
+        .ai-benefit-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-strong);
+            margin-bottom: 1rem;
+        }
+
+        .ai-benefit-description {
+            font-size: 1rem;
+            color: var(--text-weak);
+            line-height: 1.6;
+        }
+
+        .ai-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: var(--bg-alt);
+            border-radius: 20px;
+            flex-wrap: wrap;
+        }
+
+        .ai-stat-item {
+            text-align: center;
+        }
+
+        .ai-stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--cta-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .ai-stat-label {
+            font-size: 1rem;
+            color: var(--text-weak);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            #ai-powered .section-title {
+                font-size: 2rem;
+                padding: 1rem 0;
+            }
+
+            .ai-intro h3 {
+                font-size: 1.5rem;
+            }
+
+            .ai-intro p {
+                font-size: 1rem;
+            }
+
+            .ai-benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .ai-benefit-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .ai-benefit-icon {
+                font-size: 3rem;
+            }
+
+            .ai-stats {
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .ai-stat-number {
+                font-size: 2rem;
+            }
+        }
+
         /* Navigation Column */
         .contact-navigation {
             display: flex;
@@ -1978,6 +2168,7 @@
             <ul class="nav-links">
                 <li style="font-size: 1.2rem; font-weight: 700;"><a href="#home">Home</a></li>
                 <li style="font-size: 1.2rem; font-weight: 700;"><a href="#about">About</a></li>
+                <li style="font-size: 1.2rem; font-weight: 700;"><a href="#ai-powered">AI Powered</a></li>
                 <li style="font-size: 1.2rem; font-weight: 700;"><a href="#experience">Experience</a></li>
                 <li style="font-size: 1.2rem; font-weight: 700;"><a href="#projects">Projects</a></li>
                 <li style="font-size: 1.2rem; font-weight: 700;"><a href="#contact">Contact</a></li>
@@ -1993,6 +2184,7 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#ai-powered">AI Powered</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -2094,6 +2286,68 @@
                     <h3>Performance Optimization</h3>
                     <p>Lazy loading, caching, memory management, code optimization, responsive design
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Powered Section -->
+    <section id="ai-powered" class="section">
+        <div class="container">
+            <h2 class="section-title">AI-Powered Development</h2>
+            <div class="ai-intro">
+                <h3>Leveraging AI for Faster, Smarter Development</h3>
+                <p>I integrate cutting-edge AI tools and technologies into my development workflow to deliver
+                    high-quality Flutter applications faster, with enhanced code quality, and innovative features that
+                    provide exceptional user experiences.</p>
+            </div>
+            <div class="ai-benefits-grid">
+                <div class="ai-benefit-card">
+                    <span class="ai-benefit-icon">⚡</span>
+                    <h4 class="ai-benefit-title">Faster Development</h4>
+                    <p class="ai-benefit-description">AI-powered code generation and intelligent suggestions accelerate
+                        development cycles, reducing time-to-market by up to 40% while maintaining code quality and
+                        best practices.</p>
+                </div>
+                <div class="ai-benefit-card">
+                    <span class="ai-benefit-icon">🎯</span>
+                    <h4 class="ai-benefit-title">Smart Code Optimization</h4>
+                    <p class="ai-benefit-description">AI tools help identify performance bottlenecks, suggest
+                        optimizations, and refactor code automatically, ensuring apps run smoothly and efficiently on
+                        all
+                        devices.</p>
+                </div>
+                <div class="ai-benefit-card">
+                    <span class="ai-benefit-icon">🔍</span>
+                    <h4 class="ai-benefit-title">Intelligent Bug Detection</h4>
+                    <p class="ai-benefit-description">Advanced AI-powered debugging tools catch potential issues early,
+                        reducing bugs by 60% and improving app stability before deployment to production environments.
+                    </p>
+                </div>
+                <div class="ai-benefit-card">
+                    <span class="ai-benefit-icon">🚀</span>
+                    <h4 class="ai-benefit-title">Enhanced User Experience</h4>
+                    <p class="ai-benefit-description">AI-driven features like personalized recommendations, smart
+                        search, and predictive analytics create more engaging and intuitive mobile experiences for end
+                        users.</p>
+                </div>
+            </div>
+            <div class="ai-stats">
+                <div class="ai-stat-item">
+                    <span class="ai-stat-number">40%</span>
+                    <span class="ai-stat-label">Faster Development</span>
+                </div>
+                <div class="ai-stat-item">
+                    <span class="ai-stat-number">60%</span>
+                    <span class="ai-stat-label">Fewer Bugs</span>
+                </div>
+                <div class="ai-stat-item">
+                    <span class="ai-stat-number">3x</span>
+                    <span class="ai-stat-label">Productivity Boost</span>
+                </div>
+                <div class="ai-stat-item">
+                    <span class="ai-stat-number">100%</span>
+                    <span class="ai-stat-label">Quality Maintained</span>
                 </div>
             </div>
         </div>
